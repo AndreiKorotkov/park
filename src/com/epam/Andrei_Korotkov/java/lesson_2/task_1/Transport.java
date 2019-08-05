@@ -11,7 +11,7 @@ public abstract class Transport implements Comparable {
 
 
     public abstract void run();
-    //public abstract void transport();
+
 
     public int compareTo (Object obj) {
         Transport tmp = (Transport) obj;

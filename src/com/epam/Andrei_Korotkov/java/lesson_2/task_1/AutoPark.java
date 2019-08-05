@@ -37,6 +37,19 @@ public class AutoPark {
 
 
 
+        Transportation [] itransport = new Transportation [4];
+
+        itransport[0] = nefaz1;
+        itransport[1] = skoda1;
+        itransport[2] = paz1;
+        itransport[3] = VMTZ1;
+
+        for (Transportation i : itransport) {
+            i.transport();
+        }
+
+
+
 
         Transport [] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;
@@ -156,11 +169,7 @@ public class AutoPark {
                 break;
         }
 
-        for (Transport transport: ParkTransport) {
-            Transport.();
 
-
-        }
     }
 
     public static int getInt(){
