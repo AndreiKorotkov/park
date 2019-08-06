@@ -3,8 +3,6 @@ package com.epam.Andrei_Korotkov.java.lesson_2.task_1.tram;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Transportation;
 
 public class Siemens extends Tram implements Transportation {
-    public static void main(String[] args) {
-    }
 
     public Siemens(int RublePerKM, int Capacity, int Price, String Mark, String Engine) {
         this.RublePerKM = RublePerKM;

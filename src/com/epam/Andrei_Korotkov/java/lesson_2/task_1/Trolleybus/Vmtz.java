@@ -2,11 +2,14 @@ package com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus;
 
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Transportation;
 
-public class VMTZ extends Trolleybus implements Transportation {
-    public static void main(String[] args) {
-    }
+/**
+ * Created by Andrei Korotkov on 05.08.2019.
+ */
 
-    public VMTZ(int RublePerKM, int Capacity, int Price, String Mark, String Engine) {
+public class Vmtz extends Trolleybus implements Transportation {
+
+
+    public Vmtz(int RublePerKM, int Capacity, int Price, String Mark, String Engine) {
         this.RublePerKM = RublePerKM;
         this.Capacity = Capacity;
         this.Price = Price;
@@ -19,9 +22,5 @@ public class VMTZ extends Trolleybus implements Transportation {
     public void transport () {
         System.out.println("I am " +Mark+ ". I travel by " +wayOfTravel+ ", my remaining  capacity is " + (Capacity-25));
     }
-    public void run(){
-        System.out.println("I run on roads and consume electricity");
-    }
-
 
 }
