@@ -4,10 +4,11 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.getInt;
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.scanner;
-
-import java.util.*;
 
 public class AutoPark {
     Transport[] transport;
@@ -43,20 +44,32 @@ public class AutoPark {
 
         boolean Cap = false;
 
-        for (int i = 0; i < transport.length; i++) {
-            if (soughtCapacityMIn <= transport[i].Capacity && soughtCapacityMax >= transport[i].Capacity) {
-                System.out.println(transport[i].Mark + "'s capacity is " +
-                        transport[i].Capacity + " people");
-                Cap = true;
+            for (int i = 0; i < transport.length; i++) {
+                if (soughtCapacityMIn <= transport[i].Capacity &&
+                        soughtCapacityMax >= transport[i].Capacity) {
+                    System.out.println(transport[i].Mark + "'s capacity is " +
+                            transport[i].Capacity + " people");
+                    Cap = true;
+                }
             }
-        }
-        if (Cap == false) {
-            System.out.println("Not found");
-        }
+            if (Cap == false) {
+                System.out.println("Not found");
+            }
+
     }
 
     public void searchByPrice() {
-        System.out.println("Enter a price:");
+        System.out.println("Enter minimal price:");
+        int num;
+        if (scanner.hasNextInt()) {
+            num = scanner.nextInt();
+        } else {
+            System.out.println("Error. Please enter a number");
+            scanner.next();
+            num = getInt();
+        }
+
+        System.out.println("Enter maximum price:");
         int num2;
         if (scanner.hasNextInt()) {
             num2 = scanner.nextInt();
@@ -66,12 +79,13 @@ public class AutoPark {
             num2 = getInt();
         }
 
-        int SoughtPrice = num2;
+        int SoughtPriceMin = num;
+        int SoughtPriceMax = num2;
 
         boolean Cost = false;
 
         for (int i = 0; i < transport.length; i++) {
-            if (SoughtPrice == transport[i].Price) {
+            if (SoughtPriceMax >= transport[i].Price && SoughtPriceMin<= transport[i].Price) {
                 System.out.println(transport[i].Mark + "'s price is "
                         + transport[i].Price + " rubles");
                 Cost = true;

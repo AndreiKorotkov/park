@@ -10,3 +10,4 @@ public abstract class Bus extends Transport {
     public static final String wayOfTravel = "road";
 
 }
+

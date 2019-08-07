@@ -4,6 +4,8 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Exceptions.*;
+
 public abstract class Transport implements Comparable {
 
     protected int RublePerKM;
@@ -12,6 +14,29 @@ public abstract class Transport implements Comparable {
     protected String Mark;
     protected String Engine;
 
+
+    public void setCapacity(int Capacity) throws NegativeCapacityException, ExcessiveCapacityException {
+        if (Capacity < 0)
+            throw new NegativeCapacityException("Отрицательное число мест");
+        if (Capacity > 55)
+            throw new ExcessiveCapacityException("Число мест не должно быть больше 55");
+
+    }
+
+    public void setPrice(int Price) throws PriceException {
+        if (Price < 100000)
+            throw new PriceException("Incorrect price");
+    }
+
+    public void setMark(String Mark) throws NullMarkException {
+        if (Mark == null)
+            throw new NullMarkException("Input correct Mark");
+    }
+
+    public void setEngine(String Engine) throws NullEngineException {
+        if (Engine == null)
+            throw new NullEngineException("Incorrect engine type");
+    }
 
 
     public int compareTo(Object obj) {

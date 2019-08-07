@@ -4,11 +4,11 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Exceptions.*;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus.Vmtz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Nefaz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Paz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.tram.Skoda;
-
 import java.util.*;
 
 public class Main {
@@ -36,6 +36,42 @@ public class Main {
         ParkTransport[3] = VMTZ1;
 
         AutoPark autoPark1 = new AutoPark(ParkTransport);
+
+        try {
+            nefaz1.setCapacity(-5);
+        } catch (NegativeCapacityException | ExcessiveCapacityException e)
+        { e.printStackTrace();
+        } finally {
+            System.out.println("Check transport capacity by using " +
+                    "System.out.println(nameOfTheTransport.Capacity) line");
+        }
+
+        try {
+            skoda1.setMark(null);
+        } catch (NullMarkException e) {
+            e.printStackTrace();
+        }finally {
+            System.out.println("Check transport Mark by using " +
+                    "System.out.println(nameOfTheTransport.Mark) line");
+        }
+
+        try {
+            skoda1.setPrice(5000);
+        } catch (PriceException e) {
+            e.printStackTrace();
+        }finally {
+            System.out.println("Check transport Price by using " +
+                    "System.out.println(nameOfTheTransport.Price) line");
+        }
+
+        try {
+            skoda1.setEngine(null);
+        } catch (NullEngineException e) {
+            e.printStackTrace();
+        }finally {
+            System.out.println("Check transport engine type by using " +
+                    "System.out.println(nameOfTheTransport.Engine) line");
+        }
 
         while (true) {
 
