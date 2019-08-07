@@ -1,10 +1,10 @@
-package com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus;
-
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Transportation;
-
 /**
  * Created by Andrei Korotkov on 05.08.2019.
  */
+
+package com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus;
+
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Transportation;
 
 public class Vmtz extends Trolleybus implements Transportation {
 

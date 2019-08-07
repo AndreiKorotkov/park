@@ -1,12 +1,13 @@
+/**
+ * Created by Andrei Korotkov on 05.08.2019.
+ */
+
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.getInt;
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.scanner;
-import java.util.*;
 
-/**
- * Created by Andrei Korotkov on 05.08.2019.
- */
+import java.util.*;
 
 public class AutoPark {
     Transport[] transport;
@@ -17,7 +18,7 @@ public class AutoPark {
 
     public void searchByCapacity() {
 
-        System.out.println("Enter capacity:");
+        System.out.println("Enter minimal capacity:");
         int num;
         if (scanner.hasNextInt()) {
             num = scanner.nextInt();
@@ -27,12 +28,23 @@ public class AutoPark {
             num = getInt();
         }
 
-        int soughtCapacity = num;
+        System.out.println("Enter maximum capacity:");
+        int num2;
+        if (scanner.hasNextInt()) {
+            num2 = scanner.nextInt();
+        } else {
+            System.out.println("Error. Please enter a number");
+            scanner.next();
+            num2 = getInt();
+        }
+
+        int soughtCapacityMIn = num;
+        int soughtCapacityMax = num2;
 
         boolean Cap = false;
 
         for (int i = 0; i < transport.length; i++) {
-            if (soughtCapacity == transport[i].Capacity) {
+            if (soughtCapacityMIn <= transport[i].Capacity && soughtCapacityMax >= transport[i].Capacity) {
                 System.out.println(transport[i].Mark + "'s capacity is " +
                         transport[i].Capacity + " people");
                 Cap = true;
@@ -42,8 +54,6 @@ public class AutoPark {
             System.out.println("Not found");
         }
     }
-
-
 
     public void searchByPrice() {
         System.out.println("Enter a price:");
@@ -72,14 +82,13 @@ public class AutoPark {
         }
     }
 
-
-
     public void searchByMark() {
         System.out.println("Type mark of transport:");
         Scanner MarkOfTransportScanner = new Scanner(System.in);
         String str = new String(MarkOfTransportScanner.nextLine());
 
         boolean Type = false;
+
         for (int i = 0; i < transport.length; i++) {
             if (str.equals(transport[i].Mark)) {
                 System.out.println("There is " + transport[i].Mark + " in the park.");
@@ -89,25 +98,22 @@ public class AutoPark {
         if (Type == false) {
             System.out.println("Not found");
         }
-        }
+    }
 
-
-    public void searchByEngine()
-    {
+    public void searchByEngine() {
         System.out.println("Choose engine type Electric power engine or " +
                 "Internal combustion engine:");
         Scanner EngineTypeScanner = new Scanner(System.in);
         String transportEngine = new String(EngineTypeScanner.nextLine());
 
         boolean Eng = false;
+
         for (int i = 0; i < transport.length; i++) {
             if (transportEngine.equals(transport[i].Engine)) {
                 System.out.println(transport[i].Mark + " has " +
                         transport[i].Engine + ".");
                 Eng = true;
             }
-
-
         }
         if (Eng == false) {
             System.out.println("Not found");
@@ -123,9 +129,7 @@ public class AutoPark {
         }
     }
 
-
-    public void sortByCostPerKm()
-    {
+    public void sortByCostPerKm() {
         Arrays.sort(transport);
 
         for (int i = 0; i < transport.length; i++) {
