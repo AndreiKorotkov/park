@@ -17,9 +17,9 @@ public abstract class Transport implements Comparable {
 
     public void setCapacity(int Capacity) throws NegativeCapacityException, ExcessiveCapacityException {
         if (Capacity < 0)
-            throw new NegativeCapacityException("Отрицательное число мест");
+            throw new NegativeCapacityException("You have entered negative capacity");
         if (Capacity > 55)
-            throw new ExcessiveCapacityException("Число мест не должно быть больше 55");
+            throw new ExcessiveCapacityException("Capacity should not exceed 55 people");
 
     }
 
