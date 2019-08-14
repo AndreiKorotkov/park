@@ -37,12 +37,9 @@ public class AutoPark {
             scanner.next();
             num2 = getInt();
         }
-
         int soughtCapacityMIn = num;
         int soughtCapacityMax = num2;
-
         boolean Cap = false;
-
         for (int i = 0; i < transport.length; i++) {
             if (soughtCapacityMIn <= transport[i].Capacity && soughtCapacityMax >= transport[i].Capacity) {
                 System.out.println(transport[i].Mark + "'s capacity is " +
@@ -65,11 +62,8 @@ public class AutoPark {
             scanner.next();
             num2 = getInt();
         }
-
         int SoughtPrice = num2;
-
         boolean Cost = false;
-
         for (int i = 0; i < transport.length; i++) {
             if (SoughtPrice == transport[i].Price) {
                 System.out.println(transport[i].Mark + "'s price is "
@@ -85,7 +79,7 @@ public class AutoPark {
     public void searchByMark() {
         System.out.println("Type mark of transport:");
         Scanner MarkOfTransportScanner = new Scanner(System.in);
-        String str = new String(MarkOfTransportScanner.nextLine());
+        String str = MarkOfTransportScanner.nextLine();
 
         boolean Type = false;
 
@@ -104,7 +98,7 @@ public class AutoPark {
         System.out.println("Choose engine type Electric power engine or " +
                 "Internal combustion engine:");
         Scanner EngineTypeScanner = new Scanner(System.in);
-        String transportEngine = new String(EngineTypeScanner.nextLine());
+        String transportEngine = EngineTypeScanner.nextLine();
 
         boolean Eng = false;
 
@@ -131,7 +125,6 @@ public class AutoPark {
 
     public void sortByCostPerKm() {
         Arrays.sort(transport);
-
         for (int i = 0; i < transport.length; i++) {
             System.out.println("Cost of travel for " + transport[i].Mark + " is "
                     + transport[i].RublePerKM + " rubles per km.");

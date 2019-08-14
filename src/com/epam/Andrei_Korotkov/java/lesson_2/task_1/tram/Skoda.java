@@ -19,4 +19,4 @@ public class Skoda extends Tram implements Transportation {
         System.out.println("I am " + this.Mark+ ". I travel by " +wayOfTravel+
                 ", my remaining capacity is " + (this.Capacity-10));
     }
-    }
+}

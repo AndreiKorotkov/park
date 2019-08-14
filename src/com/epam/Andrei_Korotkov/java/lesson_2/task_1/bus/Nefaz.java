@@ -16,11 +16,9 @@ public class Nefaz extends Bus implements Transportation {
         this.Engine=Engine;
    }
 
-
     public void transport () {
        System.out.println("I am " +this.Mark+ ". I travel by " +wayOfTravel+
                ", my capacity is " + (this.Capacity-30));
    }
-
 }
 

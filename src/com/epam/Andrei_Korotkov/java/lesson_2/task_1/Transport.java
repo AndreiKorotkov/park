@@ -4,15 +4,20 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
-public abstract class Transport implements Comparable {
+import java.io.Serializable;
 
-    protected int RublePerKM;
-    protected int Capacity;
-    protected int Price;
+public abstract class Transport implements Comparable, Serializable {
+
+    protected transient int RublePerKM;
+    protected transient int Capacity;
+    protected transient int Price;
     protected String Mark;
     protected String Engine;
 
-
+    public String toString () {
+        return "Mark: " +this.Mark+ ", Engine: " + this.Engine+ ", " + this.RublePerKM+ ", "
+                + this.Capacity+", "+this.Price;
+    }
 
     public int compareTo(Object obj) {
         Transport tmp = (Transport) obj;

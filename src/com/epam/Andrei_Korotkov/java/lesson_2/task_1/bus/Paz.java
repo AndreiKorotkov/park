@@ -15,9 +15,9 @@ public class Paz extends Bus implements Transportation {
         this.Mark = Mark;
         this.Engine=Engine;
     }
+
     public void transport () {
         System.out.println("I am " +Mark+ ". I travel by " +wayOfTravel+
                 ", my capacity is " + (Capacity-25));
     }
-
 }
