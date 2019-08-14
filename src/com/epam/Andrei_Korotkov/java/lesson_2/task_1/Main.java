@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Transport nefaz1 = new Nefaz(200, 45, 800000, "NEFAZ-500",
+        Nefaz nefaz1 = new Nefaz(200, 45, 800000, "NEFAZ-500",
                 "Internal combustion engine");
 
         Skoda skoda1 = new Skoda(100, 30, 1500000, "Skoda-1000",
