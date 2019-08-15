@@ -4,15 +4,13 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Exceptions.*;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus.Vmtz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Nefaz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Paz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.tram.Skoda;
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.util.Arrays;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Main {
 
@@ -22,7 +20,6 @@ public class Main {
 
         Nefaz nefaz1 = new Nefaz(200, 45, 800000, "NEFAZ-500",
                 "Internal combustion engine");
-
         Skoda skoda1 = new Skoda(100, 30, 1500000, "Skoda-1000",
                 "Electric power engine");
 
@@ -37,8 +34,43 @@ public class Main {
         ParkTransport[1] = skoda1;
         ParkTransport[2] = paz1;
         ParkTransport[3] = VMTZ1;
-
         AutoPark autoPark1 = new AutoPark(ParkTransport);
+
+        try {
+            nefaz1.setCapacity(-5);
+        } catch (NegativeCapacityException | ExcessiveCapacityException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Check transport capacity by using " +
+                    "System.out.println(nameOfTheTransport.Capacity) line");
+        }
+
+        try {
+            skoda1.setMark(null);
+        } catch (NullMarkException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Check transport Mark by using " +
+                    "System.out.println(nameOfTheTransport.Mark) line");
+        }
+
+        try {
+            skoda1.setPrice(5000);
+        } catch (PriceException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Check transport Price by using " +
+                    "System.out.println(nameOfTheTransport.Price) line");
+        }
+
+        try {
+            skoda1.setEngine(null);
+        } catch (NullEngineException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Check transport engine type by using " +
+                    "System.out.println(nameOfTheTransport.Engine) line");
+        }
 
         while (true) {
             int num1 = getInt();
@@ -62,73 +94,6 @@ public class Main {
                 case 6:
                     autoPark1.sortByCostPerKm();
                     break;
-                case 7:
-                    try {
-                        ByteArrayOutputStream autoParkOutStream = new ByteArrayOutputStream();
-                        FileOutputStream autoParkFOS = new FileOutputStream("park.txt");
-                        FileChannel autoParkFileChannel = autoParkFOS.getChannel();
-                        ByteBuffer autoParkByteBuffer = ByteBuffer.wrap(autoParkOutStream.toByteArray());
-                        autoParkFileChannel.write(autoParkByteBuffer);
-                        autoParkOutStream.close();
-                        ObjectOutputStream arrayOos = new ObjectOutputStream(autoParkFOS);
-                        arrayOos.writeInt(ParkTransport.length);
-                        for (Transport transport : ParkTransport
-                        ) {
-                            arrayOos.writeObject(transport);
-                        }
-                        arrayOos.flush();
-                        arrayOos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 8:
-                    byte[] inputBufferArray = null;
-                    RandomAccessFile inputFile = null;
-                    try {
-                        inputFile = new RandomAccessFile("D:\\java\\park\\park.txt", "rw");
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    FileChannel inputFileChannel = inputFile.getChannel();
-                    ByteBuffer inputBuffer = ByteBuffer.allocate(1024);
-                    int bytesRead = 0;
-                    try {
-                        bytesRead = inputFileChannel.read(inputBuffer);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    inputBuffer.flip();
-                    inputBufferArray = inputBuffer.array();
-                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputBufferArray);
-                    ObjectInputStream arrayOis = null;
-                    try {
-                        arrayOis = new ObjectInputStream(byteArrayInputStream);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    int ParkCount = 0;
-                    try {
-                        ParkCount = arrayOis.readInt();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Transport[] readPark = new Transport[ParkCount];
-                    for (int i = 0; i < ParkCount; i++) {
-                        try {
-                            readPark[i] = (Transport) arrayOis.readObject();
-                        } catch (IOException | ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    System.out.println(Arrays.toString(readPark));
-                    inputBuffer.clear();
-                    try {
-                        inputFile.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
             }
         }
     }
@@ -136,8 +101,8 @@ public class Main {
     public static int getInt() {
         System.out.println("Enter number 1 to search by capacity, number 2 to search by price, " +
                 "number 3 to search by mark, number 4 to search by engine, type number 5 " +
-                "to show total vehicles' cost, type number 6 to sort by RublePerKm, type number 7 to serialize," +
-                " type number 8 to deserialize, type 0 to exit");
+                "to show total vehicles' cost, type number 6 to sort by RublePerKm, " +
+                "type 0 to exit");
         int num;
         if (scanner.hasNextInt()) {
             num = scanner.nextInt();

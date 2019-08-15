@@ -4,19 +4,40 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
-import java.io.Serializable;
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Exceptions.*;
 
-public abstract class Transport implements Comparable, Serializable {
+public abstract class Transport implements Comparable {
 
-    protected transient int RublePerKM;
-    protected transient int Capacity;
-    protected transient int Price;
+    protected int RublePerKM;
+    protected int Capacity;
+    protected int Price;
     protected String Mark;
     protected String Engine;
 
-    public String toString () {
-        return "Mark: " +this.Mark+ ", Engine: " + this.Engine+ ", " + this.RublePerKM+ ", "
-                + this.Capacity+", "+this.Price;
+    public void setCapacity(int Capacity) throws NegativeCapacityException, ExcessiveCapacityException {
+        this.Capacity = Capacity;
+        if (Capacity < 0)
+            throw new NegativeCapacityException("You have entered negative capacity");
+        if (Capacity > 55)
+            throw new ExcessiveCapacityException("Capacity should not exceed 55 people");
+    }
+
+    public void setPrice(int Price) throws PriceException {
+        this.Price = Price;
+        if (Price < 100000)
+            throw new PriceException("Incorrect price");
+    }
+
+    public void setMark(String Mark) throws NullMarkException {
+        this.Mark = Mark;
+        if (Mark == null)
+            throw new NullMarkException("Input correct Mark");
+    }
+
+    public void setEngine(String Engine) throws NullEngineException {
+        this.Engine = Engine;
+        if (Engine == null)
+            throw new NullEngineException("Incorrect engine type");
     }
 
     public int compareTo(Object obj) {
