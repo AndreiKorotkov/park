@@ -5,10 +5,14 @@
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus.Vmtz;
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.annotations.NumberValue;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Nefaz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Paz;
 import com.epam.Andrei_Korotkov.java.lesson_2.task_1.tram.Skoda;
+
+
 import java.io.*;
+import java.lang.annotation.Annotation;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
@@ -20,7 +24,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Nefaz nefaz1 = new Nefaz(200, 45, 800000, "NEFAZ-500",
+
+
+//        try {
+//        Annotation[] annotations = nefazClass.getSuperclass().getSuperclass().getDeclaredField("Capacity").;
+//            for (Annotation a: annotations
+//            ) { System.out.println(a);
+//            }
+//        } catch (NoSuchFieldException e) {
+//            e.printStackTrace();
+//        }
+
+//            try {
+//                System.out.println(nefazClass.getSuperclass().getSuperclass().getDeclaredField("Capacity").getAnnotations());
+//            } catch (NoSuchFieldException e) {
+//                e.printStackTrace();
+//            }
+
+
+        Nefaz nefaz1 = new Nefaz(200, 45, 800000000, "NEFAZ-500",
                 "Internal combustion engine");
 
         Skoda skoda1 = new Skoda(100, 30, 1500000, "Skoda-1000",
@@ -32,6 +54,13 @@ public class Main {
         Vmtz VMTZ1 = new Vmtz(110, 45, 1000000, "VMTZ-200",
                 "Electric power engine");
 
+
+        try {
+            nefaz1.checkTransport();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Transport[] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;
         ParkTransport[1] = skoda1;
@@ -40,9 +69,16 @@ public class Main {
 
         AutoPark autoPark1 = new AutoPark(ParkTransport);
 
+//        try {
+//            autoPark1.addNefaz(100);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
         while (true) {
             int num1 = getInt();
-            if (num1 == 0) break;
+              if (num1 == 0) break;
             switch (num1) {
                 case 1:
                     autoPark1.searchByCapacity();

@@ -4,9 +4,14 @@
 
 package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
 
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.annotations.NumberValue;
+import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Nefaz;
+
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.getInt;
 import static com.epam.Andrei_Korotkov.java.lesson_2.task_1.Main.scanner;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class AutoPark {
