@@ -2,9 +2,9 @@
  * Created by Andrei Korotkov on 05.08.2019.
  */
 
-package com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus;
+package com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus;
 
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Transportation;
+import com.epam.Andrei_Korotkov.java.lesson_7.task_1.Transportation;
 
 public class Paz extends Bus implements Transportation {
 

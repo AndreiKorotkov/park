@@ -2,17 +2,15 @@
  * Created by Andrei Korotkov on 05.08.2019.
  */
 
-package com.epam.Andrei_Korotkov.java.lesson_2.task_1;
+package com.epam.Andrei_Korotkov.java.lesson_7.task_1;
 
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.Trolleybus.Vmtz;
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.annotations.NumberValue;
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Nefaz;
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.bus.Paz;
-import com.epam.Andrei_Korotkov.java.lesson_2.task_1.tram.Skoda;
+import com.epam.Andrei_Korotkov.java.lesson_7.task_1.Trolleybus.Vmtz;
+import com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus.Nefaz;
+import com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus.Paz;
+import com.epam.Andrei_Korotkov.java.lesson_7.task_1.tram.Skoda;
 
 
 import java.io.*;
-import java.lang.annotation.Annotation;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
@@ -24,57 +22,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-//        try {
-//        Annotation[] annotations = nefazClass.getSuperclass().getSuperclass().getDeclaredField("Capacity").;
-//            for (Annotation a: annotations
-//            ) { System.out.println(a);
-//            }
-//        } catch (NoSuchFieldException e) {
-//            e.printStackTrace();
-//        }
-
-//            try {
-//                System.out.println(nefazClass.getSuperclass().getSuperclass().getDeclaredField("Capacity").getAnnotations());
-//            } catch (NoSuchFieldException e) {
-//                e.printStackTrace();
-//            }
-
-
         Nefaz nefaz1 = new Nefaz(200, 45, 800000000, "NEFAZ-500",
                 "Internal combustion engine");
 
-        Skoda skoda1 = new Skoda(100, 30, 1500000, "Skoda-1000",
+        Skoda skoda1 = new Skoda(100, 80, 1500000, "Skoda-1000",
                 "Electric power engine");
 
-        Paz paz1 = new Paz(140, 33, 700000, "PAZ-10",
+        Paz paz1 = new Paz(140, 33, 700000, "",
                 "Internal combustion engine");
 
         Vmtz VMTZ1 = new Vmtz(110, 45, 1000000, "VMTZ-200",
                 "Electric power engine");
-
-
-        try {
-            nefaz1.checkTransport();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         Transport[] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;
         ParkTransport[1] = skoda1;
         ParkTransport[2] = paz1;
         ParkTransport[3] = VMTZ1;
-
         AutoPark autoPark1 = new AutoPark(ParkTransport);
-
-//        try {
-//            autoPark1.addNefaz(100);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
 
         while (true) {
             int num1 = getInt();
@@ -165,6 +130,15 @@ public class Main {
                         e.printStackTrace();
                     }
                     break;
+                case 9:
+                    try {
+                        nefaz1.checkNumbers();
+                        paz1.checkNumbers();
+                        skoda1.checkStrings();
+                        VMTZ1.checkStrings();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
             }
         }
     }
@@ -173,7 +147,7 @@ public class Main {
         System.out.println("Enter number 1 to search by capacity, number 2 to search by price, " +
                 "number 3 to search by mark, number 4 to search by engine, type number 5 " +
                 "to show total vehicles' cost, type number 6 to sort by RublePerKm, type number 7 to serialize," +
-                " type number 8 to deserialize, type 0 to exit");
+                " type number 8 to deserialize, type 9 to check annotations, type 0 to exit");
         int num;
         if (scanner.hasNextInt()) {
             num = scanner.nextInt();

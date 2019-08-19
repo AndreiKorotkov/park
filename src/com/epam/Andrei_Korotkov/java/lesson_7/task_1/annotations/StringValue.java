@@ -1,4 +1,4 @@
-package com.epam.Andrei_Korotkov.java.lesson_2.task_1.annotations;
+package com.epam.Andrei_Korotkov.java.lesson_7.task_1.annotations;
 
 import java.lang.annotation.*;
 
@@ -7,6 +7,5 @@ import java.lang.annotation.*;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EngineAnnotation {
-String Engine ();
+public @interface StringValue {
 }

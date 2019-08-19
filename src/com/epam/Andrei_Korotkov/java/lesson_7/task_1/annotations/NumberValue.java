@@ -1,4 +1,4 @@
-package com.epam.Andrei_Korotkov.java.lesson_2.task_1.annotations;
+package com.epam.Andrei_Korotkov.java.lesson_7.task_1.annotations;
 
 import java.lang.annotation.*;
 
