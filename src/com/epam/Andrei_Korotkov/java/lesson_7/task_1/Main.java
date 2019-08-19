@@ -9,7 +9,6 @@ import com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus.Nefaz;
 import com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus.Paz;
 import com.epam.Andrei_Korotkov.java.lesson_7.task_1.tram.Skoda;
 
-
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -43,7 +42,7 @@ public class Main {
 
         while (true) {
             int num1 = getInt();
-              if (num1 == 0) break;
+            if (num1 == 0) break;
             switch (num1) {
                 case 1:
                     autoPark1.searchByCapacity();

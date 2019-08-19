@@ -6,8 +6,6 @@ package com.epam.Andrei_Korotkov.java.lesson_7.task_1;
 
 import com.epam.Andrei_Korotkov.java.lesson_7.task_1.annotations.NumberValue;
 import com.epam.Andrei_Korotkov.java.lesson_7.task_1.annotations.StringValue;
-
-
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 
@@ -22,7 +20,6 @@ public abstract class Transport implements Comparable, Serializable {
     protected String Mark;
     @StringValue
     protected String Engine;
-
 
     public String toString () {
         return "Mark: " +this.Mark+ ", Engine: " + this.Engine+ ", " + this.RublePerKM+ ", "
@@ -41,7 +38,6 @@ public abstract class Transport implements Comparable, Serializable {
         // текущее равно полученному
         return 0;
     }
-
 
     public void checkNumbers() throws Exception {
         try {
@@ -79,12 +75,10 @@ public abstract class Transport implements Comparable, Serializable {
     }
     public void checkStrings() throws Exception {
         try {
-
             Class <Transport> transportClass=Transport.class;
             Annotation[] capacityAnnotations = transportClass.getDeclaredField("Engine").getDeclaredAnnotations();
             for (Annotation a: capacityAnnotations) {
                 if (a instanceof StringValue) {
-
                     if (Engine==null||Engine.length()>3) {
                         throw new Exception ("Wrong engine type");
                     }
@@ -96,7 +90,6 @@ public abstract class Transport implements Comparable, Serializable {
             Annotation[] priceAnnotations = transportClass.getDeclaredField("Mark").getDeclaredAnnotations();
             for (Annotation a: priceAnnotations) {
                 if (a instanceof StringValue) {
-
                     if (Mark==null||Mark.length()>3) {
                         throw new Exception ("Wrong mark");
                     }else {
@@ -107,7 +100,5 @@ public abstract class Transport implements Comparable, Serializable {
         } catch (NoSuchFieldException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
-
     }
-
 }
