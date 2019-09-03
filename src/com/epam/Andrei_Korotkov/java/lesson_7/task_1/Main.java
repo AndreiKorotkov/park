@@ -33,6 +33,8 @@ public class Main {
         Vmtz VMTZ1 = new Vmtz(110, 45, 1000000, "VMTZ-200",
                 "Electric power engine");
 
+        System.out.println(nefaz1.getClass().getSuperclass().getSuperclass().getSuperclass().toString());
+
         Transport[] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;
         ParkTransport[1] = skoda1;
@@ -130,14 +132,12 @@ public class Main {
                     }
                     break;
                 case 9:
-                    try {
-                        nefaz1.checkNumbers();
-                        paz1.checkNumbers();
-                        skoda1.checkStrings();
-                        VMTZ1.checkStrings();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+//                    ObjectChecker objectChecker = new ObjectChecker();
+//                    objectChecker.checkObjectsAnnotations(nefaz1);
+//                    objectChecker.checkObjectsAnnotations(paz1);
+//                    objectChecker.checkObjectsAnnotations(skoda1);
+//                    objectChecker.checkObjectsAnnotations(VMTZ1);
+
             }
         }
     }
