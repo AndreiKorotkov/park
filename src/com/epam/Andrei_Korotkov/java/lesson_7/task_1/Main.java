@@ -15,6 +15,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.epam.Andrei_Korotkov.java.lesson_7.task_1.ObjectChecker.getAllMins;
@@ -42,7 +43,8 @@ public class Main {
             System.out.println(getAllMins(nefaz1.getClass()).get(i));
         }
 
-        ArrayList nefazAllMins = ObjectChecker.getAllMins(nefaz1.getClass());
+        List nefazAllMins = ObjectChecker.getAllMins(nefaz1.getClass());
+        System.out.println(nefazAllMins.size());
 
         Transport[] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;

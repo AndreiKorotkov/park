@@ -6,24 +6,33 @@ import com.epam.Andrei_Korotkov.java.lesson_7.task_1.annotations.StringValue;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ObjectChecker {
 
 
-    public static ArrayList<Integer> getAllMins (Class cls) {
+    public static int getSuperMins (Class cls) throws NoSuchFieldException {
+        int min;
+        min = cls.getSuperclass().getSuperclass().getDeclaredField("Capacity").getAnnotation(NumberValue.class).min();
+        return min;
+    }
+
+
+
+    public static List<Integer> getAllMins (Class cls) {
         ArrayList<Integer> AllMins = new ArrayList<>();
-        if (!cls.getSuperclass().toString().equals("class java.lang.Object")) {
+        while (!cls.toString().equals("class java.lang.Object")) {
             Field[] fields = cls.getDeclaredFields();
             for (Field f : fields) {
                 Annotation[] annotations = f.getDeclaredAnnotations();
                 for (Annotation a : annotations) {
                     if (a instanceof NumberValue) {
                         AllMins.add(((NumberValue) a).min());
+
                     }
                 }
             }
-            cls = cls.getSuperclass();
-            getAllMins(cls);
+            cls=cls.getSuperclass();
         }
         return AllMins;
     }
