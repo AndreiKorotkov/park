@@ -10,16 +10,20 @@ import com.epam.Andrei_Korotkov.java.lesson_7.task_1.bus.Paz;
 import com.epam.Andrei_Korotkov.java.lesson_7.task_1.tram.Skoda;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static com.epam.Andrei_Korotkov.java.lesson_7.task_1.ObjectChecker.getAllMins;
 
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException {
 
         Nefaz nefaz1 = new Nefaz(200, 45, 800000000, "NEFAZ-500",
                 "Internal combustion engine");
@@ -33,7 +37,12 @@ public class Main {
         Vmtz VMTZ1 = new Vmtz(110, 45, 1000000, "VMTZ-200",
                 "Electric power engine");
 
-        System.out.println(nefaz1.getClass().getSuperclass().getSuperclass().getSuperclass().toString());
+
+        for (int i = 0; i < getAllMins(nefaz1.getClass()).size(); i++) {
+            System.out.println(getAllMins(nefaz1.getClass()).get(i));
+        }
+
+        ArrayList nefazAllMins = ObjectChecker.getAllMins(nefaz1.getClass());
 
         Transport[] ParkTransport = new Transport[4];
         ParkTransport[0] = nefaz1;
